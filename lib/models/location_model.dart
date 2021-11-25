@@ -13,8 +13,8 @@ class Location {
 
   final int id;
   final String name;
-  final String lat;
-  final String lon;
+  final double lat;
+  final double lon;
 
   factory Location.fromRawJson(String str) =>
       Location.fromJson(json.decode(str));
@@ -24,8 +24,8 @@ class Location {
   factory Location.fromJson(Map<String, dynamic> json) => Location(
         id: json["id"],
         name: json["name"],
-        lat: json["lat"],
-        lon: json["lon"],
+        lat: json["lat"].toDouble(),
+        lon: json["lon"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {

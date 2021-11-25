@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/models/location_model.dart';
-import 'package:weatherapp/pages/current_detail_page.dart';
+import 'package:weatherapp/pages/weekly_detail_page.dart';
 import 'package:weatherapp/providers/location_provider.dart';
 import 'package:provider/provider.dart';
 
-class CurrentPage extends StatelessWidget {
-  const CurrentPage({Key? key}) : super(key: key);
+class WeeklyPage extends StatelessWidget {
+  const WeeklyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,10 @@ class CurrentPage extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CurrentDetailPage(
-                  id: location.id,
+                builder: (context) => WeeklyDetailPage(
+                  lat: location.lat,
+                  lon: location.lat,
+                  cityName: location.name,
                 ),
               ));
         },
@@ -60,14 +62,15 @@ class CurrentPage extends StatelessWidget {
         alignment: Alignment.center,
         child: Column(
           children: [
-            const Text(
-              "Weather Today",
+            Text(
+              "Weekly Weather",
               style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.teal),
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+                color: Colors.orange,
+              ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 24,
             ),
             FutureBuilder<List<Location>>(

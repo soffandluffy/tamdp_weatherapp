@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/models/location_model.dart';
 import 'package:weatherapp/pages/about_page.dart';
 import 'package:weatherapp/pages/current_page.dart';
-import 'package:weatherapp/pages/daily_page.dart';
+import 'package:weatherapp/pages/weekly_page.dart';
+import 'package:weatherapp/providers/location_provider.dart';
 import 'package:weatherapp/widget/custom_animated_bottom_bar.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final _inactiveColor = Colors.grey;
+  final _inactiveColor = Colors.teal[200];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,6 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text("Weather App"),
-          backgroundColor: Colors.green[200],
         ),
         body: getBody(),
         bottomNavigationBar: _buildBottomBar());
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBottomBar() {
     return CustomAnimatedBottomBar(
       containerHeight: 70,
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blue,
       selectedIndex: _currentIndex,
       showElevation: true,
       itemCornerRadius: 24,
@@ -40,21 +42,21 @@ class _HomePageState extends State<HomePage> {
         BottomNavyBarItem(
           icon: const Icon(Icons.cloud),
           title: const Text('Current'),
-          activeColor: Colors.green,
+          activeColor: Colors.white,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: const Icon(Icons.cloud_circle),
-          title: const Text('Daily'),
-          activeColor: Colors.blueAccent,
+          title: const Text('Weekly'),
+          activeColor: Colors.white,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: const Icon(Icons.info),
           title: const Text('About'),
-          activeColor: Colors.teal,
+          activeColor: Colors.white,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -65,7 +67,7 @@ class _HomePageState extends State<HomePage> {
   Widget getBody() {
     List<Widget> pages = [
       const CurrentPage(),
-      const DailyPage(),
+      const WeeklyPage(),
       const AboutPage(),
     ];
     return IndexedStack(

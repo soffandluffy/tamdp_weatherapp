@@ -1,39 +1,10 @@
 // To parse this JSON data, do
 //
-//     final daily = dailyFromJson(jsonString);
+//     final weekly = weeklyFromJson(jsonString);
 import 'dart:convert';
 
-class Daily {
-  Daily({
-    required this.lat,
-    required this.lon,
-    required this.daily,
-  });
-
-  final double lat;
-  final double lon;
-  final List<DailyElement> daily;
-
-  factory Daily.fromRawJson(String str) => Daily.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Daily.fromJson(Map<String, dynamic> json) => Daily(
-        lat: json["lat"].toDouble(),
-        lon: json["lon"].toDouble(),
-        daily: List<DailyElement>.from(
-            json["daily"].map((x) => DailyElement.fromJson(x))),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "lat": lat,
-        "lon": lon,
-        "daily": List<dynamic>.from(daily.map((x) => x.toJson())),
-      };
-}
-
-class DailyElement {
-  DailyElement({
+class Weekly {
+  Weekly({
     required this.dt,
     required this.temp,
     required this.pressure,
@@ -47,12 +18,11 @@ class DailyElement {
   final int humidity;
   final List<Weather> weather;
 
-  factory DailyElement.fromRawJson(String str) =>
-      DailyElement.fromJson(json.decode(str));
+  factory Weekly.fromRawJson(String str) => Weekly.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory DailyElement.fromJson(Map<String, dynamic> json) => DailyElement(
+  factory Weekly.fromJson(Map<String, dynamic> json) => Weekly(
         dt: json["dt"],
         temp: Temp.fromJson(json["temp"]),
         pressure: json["pressure"],
@@ -75,17 +45,11 @@ class Temp {
     required this.day,
     required this.min,
     required this.max,
-    required this.night,
-    required this.eve,
-    required this.morn,
   });
 
   final double day;
   final double min;
   final double max;
-  final double night;
-  final double eve;
-  final double morn;
 
   factory Temp.fromRawJson(String str) => Temp.fromJson(json.decode(str));
 
@@ -95,18 +59,12 @@ class Temp {
         day: json["day"].toDouble(),
         min: json["min"].toDouble(),
         max: json["max"].toDouble(),
-        night: json["night"].toDouble(),
-        eve: json["eve"].toDouble(),
-        morn: json["morn"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
         "day": day,
         "min": min,
         "max": max,
-        "night": night,
-        "eve": eve,
-        "morn": morn,
       };
 }
 
