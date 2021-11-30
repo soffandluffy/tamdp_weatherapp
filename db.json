@@ -1,33 +1,32 @@
 {
-    "location" : [
-        {
+    "location": [{
             "id": 1627896,
-            "name" : "Semarang",
-            "lat" : -6.9932,
-            "lon": 110.420303
+            "name": "Semarang",
+            "lat": -6.9932,
+            "lon": ""
         },
         {
             "id": 1629131,
-            "name" : "Salatiga",
-            "lat" : -7.33194,
+            "name": "Salatiga",
+            "lat": "",
             "lon": 110.492783
         },
         {
             "id": 1624496,
-            "name" : "Tegal",
-            "lat" : -6.4046,
+            "name": "Tegal",
+            "lat": -6.4046,
             "lon": 105.897202
         },
         {
             "id": 1631766,
-            "name" : "Pekalongan",
-            "lat" : -6.8886,
+            "name": "Pekalongan",
+            "lat": -6.8886,
             "lon": 109.675301
         },
         {
             "id": 1636884,
-            "name" : "Magelang",
-            "lat" : -7.47056,
+            "name": "Magelang",
+            "lat": -7.47056,
             "lon": 110.217781
         }
     ]

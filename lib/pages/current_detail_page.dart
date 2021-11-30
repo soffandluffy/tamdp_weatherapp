@@ -20,7 +20,6 @@ class CurrentDetailPage extends StatefulWidget {
 }
 
 class _CurrentDetailPageState extends State<CurrentDetailPage> {
-  String today = "";
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +98,7 @@ class _CurrentDetailPageState extends State<CurrentDetailPage> {
               int pressure = snapshot.data![0].main.pressure;
 
               return Scaffold(
+                backgroundColor: Colors.white,
                 appBar: AppBar(
                   leading: GestureDetector(
                     onTap: () {

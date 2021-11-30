@@ -17,16 +17,21 @@ class WeatherService {
     final newUrl = url.replace(queryParameters: params);
     var response = await http.get(newUrl, headers: headers);
 
-    if (response.statusCode == 200) {
-      List data = jsonDecode("[" + response.body + "]");
-      List<Weather> weathers = [];
-      for (var item in data) {
-        weathers.add(Weather.fromJson(item));
-      }
+    try {
+      if (response.statusCode == 200) {
+        List data = jsonDecode("[" + response.body + "]");
+        List<Weather> weathers = [];
+        for (var item in data) {
+          weathers.add(Weather.fromJson(item));
+        }
 
-      return weathers;
-    } else {
-      throw Exception('Failed getting current weather');
+        return weathers;
+      } else {
+        throw Exception('Failed getting current weather');
+      }
+    } catch (e) {
+      print(e);
+      throw Exception(e);
     }
   }
 }
